@@ -15,8 +15,6 @@ public class Jugador implements IObserverJugador {
 
 	@Override
 	public int numeroAciertos(List<Integer> numerosGanadores) {
-		// TODO Auto-generated method stub
-		int aciertos = 0;
 		numerosGanadores.retainAll(numeros);
 		return numerosGanadores.size();
 	}
