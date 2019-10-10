@@ -1,12 +1,11 @@
 package main;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import clases.Jugador;
 import clases.LoteriaPrimitiva;
 import interfaces.IObserverJugador;
+import jdk.nashorn.internal.runtime.UnwarrantedOptimismException;
 
 public class Main {
 
@@ -15,6 +14,7 @@ public class Main {
 		LoteriaPrimitiva loteria = new LoteriaPrimitiva();
 		
 		List<Jugador> jugadores = new ArrayList<Jugador>();
+//		jugadores.add(new Jugador("Jugador0", );
 
 		
 	}

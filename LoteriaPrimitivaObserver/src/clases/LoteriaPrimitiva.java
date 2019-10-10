@@ -1,28 +1,49 @@
 package clases;
 
+import interfaces.IObserverJugador;
 import interfaces.ISubject;
 
-import java.util.List;
+import java.util.*;
 
-import java.util.ArrayList;
-import java.util.Random;
 import java.util.stream.IntStream;
 
 public class LoteriaPrimitiva implements ISubject {
+
+	Set<Integer> sorteo;
+	List<IObserverJugador> lObservers;
+
+
 
 	@Override
 	/**
 	 * Permite obtener un listado de 6 numeros aleatorios que conforman los numeros ganadores del sorteo.
 	 * @sorteo: listado de los numeros ganadores
 	 */
-	public List<Integer> nuevoSorteo() {
-		ArrayList<Integer> sorteo = new ArrayList<>(6);
+	public void nuevoSorteo() {
+		sorteo = new HashSet<Integer>();
 		Random r = new Random();
-		IntStream iS = r.ints(1, 50);
-		for (int i = 0; i < 6; i++){
-			sorteo.set(i, iS.toArray()[i]);
+		r.setSeed(0);
+		while(sorteo.size()<6){
+			sorteo.add(r.nextInt(49)+1);
 		}
-		return sorteo;
+		notifyJugadores();
+	}
+
+	@Override
+	public void registerJugador(IObserverJugador observerJugador) {
+		lObservers.add(observerJugador);
+	}
+
+	@Override
+	public void unregisterJugador(IObserverJugador observerJugador) {
+		lObservers.remove(lObservers.indexOf(observerJugador));
+	}
+
+	@Override
+	public void notifyJugadores() {
+		for (IObserverJugador j : lObservers){
+			j.update(sorteo);
+		}
 	}
 
 }

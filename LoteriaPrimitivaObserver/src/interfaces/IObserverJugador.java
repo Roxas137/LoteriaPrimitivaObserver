@@ -1,6 +1,6 @@
 package interfaces;
 
-import java.util.List;
+import java.util.Set;
 
 
 public interface IObserverJugador {
@@ -10,5 +10,6 @@ public interface IObserverJugador {
 	 * @param numerosGanadores Lista de numeros ganadores del sorteo
 	 * @return Devuelve la cantidad de aciertos de un jugador
 	 */
-	int numeroAciertos(List<Integer> numerosGanadores);
+	int numeroAciertos();
+	void update(Set<Integer> numerosGanadores);
 }
