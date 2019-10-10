@@ -1,5 +1,5 @@
 package interfaces;
 
-public interface JugadorInterface {
+public interface IObserverJugador {
 	int numeroAciertos(int[] numerosGanadores);
 }

@@ -1,8 +1,8 @@
 package clases;
 
-import interfaces.SubjectInterface;
+import interfaces.ISubject;
 
-public class LoteriaPrimitiva implements SubjectInterface {
+public class LoteriaPrimitiva implements ISubject {
 
 	@Override
 	public int[] nuevoSorteo() {

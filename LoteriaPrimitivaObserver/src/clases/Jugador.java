@@ -1,8 +1,8 @@
 package clases;
 
-import interfaces.JugadorInterface;
+import interfaces.IObserverJugador;
 
-public class Jugador implements JugadorInterface {
+public class Jugador implements IObserverJugador {
 	String nombre;
 	int[] numeros;
 	
