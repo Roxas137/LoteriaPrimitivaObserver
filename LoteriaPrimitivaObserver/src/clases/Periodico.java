@@ -1,7 +1,21 @@
 package clases;
 
-import interfaces.IObserverPeriodico;
+import java.util.Set;
 
-public class Periodico implements IObserverPeriodico {
+import interfaces.IObserver;
+
+public class Periodico implements IObserver {
+
+	@Override
+	public int numeroAciertos() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void update(Set<Integer> numerosGanadores) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

@@ -3,7 +3,7 @@ package interfaces;
 import java.util.Set;
 
 
-public interface IObserverJugador {
+public interface IObserver {
 	
 	/*
 	 * Metodo para calcular la cantidad de aciertos de un jugador

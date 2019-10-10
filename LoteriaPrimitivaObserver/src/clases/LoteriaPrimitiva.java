@@ -1,6 +1,6 @@
 package clases;
 
-import interfaces.IObserverJugador;
+import interfaces.IObserver;
 import interfaces.ISubject;
 
 import java.util.*;
@@ -10,7 +10,7 @@ import java.util.stream.IntStream;
 public class LoteriaPrimitiva implements ISubject {
 
 	Set<Integer> sorteo;
-	List<IObserverJugador> lObservers;
+	List<IObserver> lObservers;
 
 
 
@@ -30,18 +30,18 @@ public class LoteriaPrimitiva implements ISubject {
 	}
 
 	@Override
-	public void registerJugador(IObserverJugador observerJugador) {
-		lObservers.add(observerJugador);
+	public void registerObserver(IObserver observer) {
+		lObservers.add(observer);
 	}
 
 	@Override
-	public void unregisterJugador(IObserverJugador observerJugador) {
+	public void unregisterObserver(IObserver observerJugador) {
 		lObservers.remove(lObservers.indexOf(observerJugador));
 	}
 
 	@Override
 	public void notifyJugadores() {
-		for (IObserverJugador j : lObservers){
+		for (IObserver j : lObservers){
 			j.update(sorteo);
 		}
 	}

@@ -5,8 +5,8 @@ import java.util.List;
 public interface ISubject {
 
     void nuevoSorteo();
-    void registerJugador(IObserverJugador observerJugador);
-    void unregisterJugador(IObserverJugador observerJugador);
+    void registerObserver(IObserver observer);
+    void unregisterObserver(IObserver observer);
     void notifyJugadores();
 
 }
