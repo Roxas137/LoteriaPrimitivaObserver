@@ -1,5 +1,7 @@
 package interfaces;
 
+import java.util.List;
+
 public interface ISubject {
-	int[] nuevoSorteo();
+    List<Integer> nuevoSorteo();
 }
