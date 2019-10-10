@@ -6,6 +6,7 @@ import java.util.List;
 
 import clases.Jugador;
 import clases.LoteriaPrimitiva;
+import interfaces.IObserverJugador;
 
 public class Main {
 
@@ -14,7 +15,8 @@ public class Main {
 		LoteriaPrimitiva loteria = new LoteriaPrimitiva();
 		
 		List<Jugador> jugadores = new ArrayList<Jugador>();
-		Jugador jugador = new Jugador("Pepe", Arrays.asList(1,2,3,4,5,6));
+
+		
 	}
 
 }
