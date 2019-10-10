@@ -5,7 +5,7 @@ import java.util.*;
 import clases.Jugador;
 import clases.LoteriaPrimitiva;
 import interfaces.IObserverJugador;
-import jdk.nashorn.internal.runtime.UnwarrantedOptimismException;
+
 
 public class Main {
 
