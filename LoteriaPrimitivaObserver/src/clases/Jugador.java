@@ -1,20 +1,24 @@
 package clases;
 
+import java.util.List;
+
 import interfaces.IObserverJugador;
 
 public class Jugador implements IObserverJugador {
 	String nombre;
-	int[] numeros;
+	List<Integer> numeros;
 	
-	public Jugador(String nombre, int[] numeros) {
+	public Jugador(String nombre, List<Integer> numeros) {
 		this.nombre = nombre;
 		this.numeros = numeros;
 	}
 
 	@Override
-	public int numeroAciertos(int[] numerosGanadores) {
+	public int numeroAciertos(List<Integer> numerosGanadores) {
 		// TODO Auto-generated method stub
-		return 0;
+		int aciertos = 0;
+		numerosGanadores.retainAll(numeros);
+		return numerosGanadores.size();
 	}
 	
 }

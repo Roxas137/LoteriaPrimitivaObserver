@@ -1,5 +1,7 @@
 package interfaces;
 
+import java.util.List;
+
 public interface IObserverJugador {
-	int numeroAciertos(int[] numerosGanadores);
+	int numeroAciertos(List<Integer> numerosGanadores);
 }
