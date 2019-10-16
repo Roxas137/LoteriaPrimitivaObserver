@@ -1,6 +1,7 @@
 package clases;
 
 import interfaces.IObserver;
+import interfaces.IObserverPeriodico;
 import interfaces.ISubject;
 
 import java.util.*;
@@ -9,12 +10,15 @@ import java.util.stream.IntStream;
 
 public class LoteriaPrimitiva implements ISubject {
 
-	Set<Integer> sorteo;
-	List<IObserver> lObservers;
+	private Set<Integer> sorteo;
+	private List<IObserver> lObservers;
+	private IObserverPeriodico periodico;
 
+    public LoteriaPrimitiva(){
+        sorteo = new HashSet<>();
+        lObservers = new ArrayList<>();
+    }
 
-
-	@Override
 	/**
 	 * Permite obtener un listado de 6 numeros aleatorios que conforman los numeros ganadores del sorteo.
 	 * @sorteo: listado de los numeros ganadores
@@ -26,6 +30,7 @@ public class LoteriaPrimitiva implements ISubject {
 		while(sorteo.size()<6){
 			sorteo.add(r.nextInt(49)+1);
 		}
+		notifyPeriodico();
 		notifyJugadores();
 	}
 
@@ -35,15 +40,23 @@ public class LoteriaPrimitiva implements ISubject {
 	}
 
 	@Override
+	public void registerPeriodico(IObserverPeriodico periodico){
+	    this.periodico = periodico;
+    }
+
+	@Override
 	public void unregisterObserver(IObserver observerJugador) {
 		lObservers.remove(lObservers.indexOf(observerJugador));
 	}
 
-	@Override
 	public void notifyJugadores() {
 		for (IObserver j : lObservers){
 			j.update(sorteo);
 		}
 	}
+
+	public void notifyPeriodico(){
+	    periodico.updatePrimitiva(sorteo);
+    }
 
 }

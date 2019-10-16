@@ -1,17 +1,21 @@
 package clases;
 
+import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 import interfaces.IObserver;
+import interfaces.IObserverPeriodico;
 import interfaces.ISubject;
+import interfaces.ISubjectJugador;
 
-public class Jugador implements IObserver, ISubject {
-	String nombre;
-	Set<Integer> numeros;
-	Set<Integer> numerosGanadores;
+public class Jugador implements IObserver, ISubjectJugador{
+	private String nombre;
+	private Set<Integer> numeros;
+	private Set<Integer> numerosGanadores;
+	private IObserverPeriodico periodico;
 
-	public Jugador(String nombre, Set<Integer> numeros) {
+	public Jugador(String nombre) {
 		this.nombre = nombre;
-		this.numeros = numeros;
 	}
 
 	@Override
@@ -23,31 +27,27 @@ public class Jugador implements IObserver, ISubject {
 	@Override
 	public void update(Set<Integer> numerosGanadores) {
 		this.numerosGanadores=numerosGanadores;
+		numeros = new HashSet<Integer>();
+		Random r = new Random();
+		while(numeros.size()<6){
+			numeros.add(r.nextInt(49)+1);
+		}
+
+		notifyPeriodico();
 	}
 
 	@Override
-	public void nuevoSorteo() {
+	public void registerPeriodico(IObserverPeriodico observer) {
 		// TODO Auto-generated method stub
-		
+		periodico = observer;
 	}
 
 	@Override
-	public void registerObserver(IObserver observer) {
-		// TODO Auto-generated method stub
-		
+	public void unregisterPeriodico(IObserverPeriodico periodico) {
+
 	}
 
-	@Override
-	public void unregisterObserver(IObserver observer) {
-		// TODO Auto-generated method stub
-		
+	public void notifyPeriodico(){
+		periodico.updateJugadores(numeros);
 	}
-
-	@Override
-	public void notifyJugadores() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
 }
